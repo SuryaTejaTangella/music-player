@@ -138,9 +138,9 @@ function showSongs() {
 
   // Hiding the song-image
   const songImage = document.getElementById("songImage");
-  songImage.style.display = "none";
+  if (!currentSongId) songImage.style.display = "none";
   const cdWrapper = document.querySelector(".cd-wrapper");
-  cdWrapper.style.display = "none";
+  if (!currentSongId) cdWrapper.style.display = "none";
 
   // Filter and display matching songs
   for (const song of allSongs) {
