@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+
+    <!-- Integrating FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/722458dd31.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Integrating Bootstrap CDN links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"
+      integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <!-- <a class="navbar-brand" href="#">
+            <img
+              src="media/MusicPlayerLogo-removebg.png"
+              alt="Logo"
+              width="75"
+              height="75"
+              class="d-inline-block align-text-top"
+            />
+          </a> -->
+          <span class="navbar-text heading text-white"> Music Player </span>
+
+          <!-- Search Box -->
+          <div class="searchContainer">
+            <input
+              id="searchInput"
+              class="form-control form-control-lg"
+              type="text"
+              autocomplete="off"
+              placeholder="Search for songs or artists..."
+              aria-label="default input example"
+              style="width: 500px; margin-top: 10px"
+            />
+            <div
+              id="searchDropdown"
+              class="dropdown-box"
+              style="width: 500px"
+            ></div>
+          </div>
+
+          <!-- Switch theme -->
+          <div class="form-check form-switch form-check-reverse">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="switchCheckReverse"
+            />
+            <label class="form-check-label text-white" for="switchCheckReverse">
+              Dark Theme
+            </label>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-3 all-songs">
+          <!-- Display song list and filter option -->
+          <label> Filter by Genre </label>
+          <select
+            class="form-select form-select-lg mb-3"
+            aria-label="Large select example"
+            id="selectGenre"
+          >
+            <option selected value="all">All</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="hiphop">Hip-Hop</option>
+          </select>
+          <span id="songsList">Songs List</span>
+        </div>
+        <div class="col-6 card">
+          <div class="now-playing"></div>
+          <div class="cd-wrapper">
+            <img
+              id="songImage"
+              alt="Album Cover"
+              class="img-fluid song-image"
+            />
+          </div>
+          <audio class="song-audio" id="audioPlayer" autoplay controls></audio>
+          <div class="controls">
+            <button id="prev">
+              <i class="fa-solid fa-backward"></i> Previous
+            </button>
+            <button id="addToPlaylist">
+              <i class="fa-solid fa-square-plus"></i> Add to Playlist
+            </button>
+            <button id="next">Next <i class="fa-solid fa-forward"></i></button>
+          </div>
+        </div>
+
+        <div class="col playlist">
+          <!-- store playlist and create new playlist -->
+          <div class="input-group mb-3">
+            <input
+              id="playlistName"
+              type="text"
+              class="form-control"
+              placeholder="Create a New Playlist"
+              aria-label="Create Playlist"
+              aria-describedby="button-addon2"
+            />
+            <button
+              id="createNewPlaylist"
+              class="btn btn-outline-success"
+              type="button"
+              id="button-addon2"
+            >
+              Create
+            </button>
+          </div>
+          <div id="currentPlaylistContainer">
+            <button
+              id="currentPlaylist"
+              data-bs-toggle="collapse"
+              data-bs-target="#myCollapse"
+            ></button>
+            <div class="collapse" id="myCollapse">
+              <div id="currentPlaylistSongs"></div>
+            </div>
+          </div>
+          <br />
+          <h5 id="allPlaylists">All Playlists</h5>
+          <div id="allPlaylistsContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="player.js"></script>
+  </body>
+</html>
